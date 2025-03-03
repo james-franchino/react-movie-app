@@ -40,7 +40,7 @@ The application is broken down into the following components:
 
    ```
    git clone https://github.com/james-franchino/react-movie-app.git
-   cd movie-explorer
+   cd react-movie-app
    ```
 
 2. Install dependencies:
