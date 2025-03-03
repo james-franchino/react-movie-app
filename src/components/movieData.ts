@@ -20,7 +20,7 @@ export const movies: Movie[] = [
     genre: ["Sci-Fi", "Action", "Thriller"],
     rating: 8.8,
     runtime: 148,
-    poster: "https://via.placeholder.com/150x225?text=Inception",
+    poster: "src/assets/inception.jpg",
     description:
       "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
   },
@@ -32,7 +32,7 @@ export const movies: Movie[] = [
     genre: ["Drama"],
     rating: 9.3,
     runtime: 142,
-    poster: "https://via.placeholder.com/150x225?text=Shawshank",
+    poster: "src/assets/shawshank.jpg",
     description:
       "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
   },
@@ -44,7 +44,7 @@ export const movies: Movie[] = [
     genre: ["Action", "Crime", "Drama"],
     rating: 9.0,
     runtime: 152,
-    poster: "https://via.placeholder.com/150x225?text=Dark+Knight",
+    poster: "src/assets/dark_knight.jpg",
     description:
       "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
   },
@@ -56,7 +56,7 @@ export const movies: Movie[] = [
     genre: ["Crime", "Drama"],
     rating: 8.9,
     runtime: 154,
-    poster: "https://via.placeholder.com/150x225?text=Pulp+Fiction",
+    poster: "src/assets/pulp_fiction.jpg",
     description:
       "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
   },
@@ -68,7 +68,7 @@ export const movies: Movie[] = [
     genre: ["Drama", "Romance"],
     rating: 8.8,
     runtime: 142,
-    poster: "https://via.placeholder.com/150x225?text=Forrest+Gump",
+    poster: "src/assets/forrest_gump.jpg",
     description:
       "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75.",
   },
@@ -80,7 +80,7 @@ export const movies: Movie[] = [
     genre: ["Action", "Sci-Fi"],
     rating: 8.7,
     runtime: 136,
-    poster: "https://via.placeholder.com/150x225?text=The+Matrix",
+    poster: "src/assets/matrix.jpg",
     description:
       "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
   },
