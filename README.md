@@ -1,55 +1,128 @@
-# React + TypeScript + Vite
+# Movie Explorer App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to browse and explore a collection of movies. This app was developed as part of a coding assignment focusing on React components and props.
 
-Currently, two official plugins are available:
+![Movie Explorer App Screenshot](src/assets/screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Browse movies with an intuitive card-based interface
+- Filter movies by genre using the sidebar
+- Search for movies by title or director
+- View detailed information about each movie by clicking on a card
+- Responsive design that works on desktop and mobile devices
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Structure
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+The application is broken down into the following components:
+
+- **App**: The main component that manages state and renders child components
+- **Sidebar**: Displays filtering options by genre
+- **ItemList**: Renders the grid of movie cards
+- **ItemCard**: Displays information for a single movie
+
+## Technologies Used
+
+- React
+- TypeScript
+- CSS for styling
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or above)
+- npm
+
+### Installation
+
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/james-franchino/react-movie-app.git
+   cd movie-explorer
+   ```
+
+2. Install dependencies:
+
+   ```
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```
+   npm run dev
+   ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Project Requirements
+
+This project was created following these requirements:
+
+- Create at least 3 React components
+- Display test data
+- Use props to pass data between components
+- Ensure no console errors/warnings
+
+## Data Structure
+
+The movie data is structured as follows:
+
+```typescript
+type Movie = {
+  id: number;
+  title: string;
+  director: string;
+  year: number;
+  genre: string[];
+  rating: number;
+  runtime: number; // in minutes
+  poster: string;
+  description: string;
+};
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Movie Posters
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The application uses movie poster images stored in the `src/assets` directory. For best results, posters should have a 2:3 aspect ratio (typical for movie posters).
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
+## Customization
+
+### Adding More Movies
+
+To add more movies to the collection, update the `movies` array in the `movieData.ts` file:
+
+```typescript
+export const movies: Movie[] = [
+  // Existing movies...
+  {
+    id: 7,
+    title: "New Movie Title",
+    director: "Director Name",
+    year: 2023,
+    genre: ["Action", "Adventure"],
+    rating: 8.5,
+    runtime: 120,
+    poster: "/assets/new_movie.jpg",
+    description: "Description of the new movie...",
   },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+];
 ```
-# react-movie-app
+
+### Changing Styles
+
+The app's styling is contained in `App.css`. Modify this file to customize the appearance of the application.
+
+## Future Enhancements
+
+- Add sorting functionality (by year, rating, etc.)
+- Implement user authentication for personalized watchlists
+- Add a rating system for users to rate movies
+- Integrate with a movie API for a larger collection
+
+## Acknowledgements
+
+- Movie data and images are used for educational purposes only
+- This project was created as part of a React learning exercise
