@@ -43,13 +43,13 @@ function App() {
     setMovieList([...movieList, newMovie]);
   };
 
-  // Task 3: Implement delete functionality
+  // Implement delete functionality
   const handleDeleteMovie = (id: number) => {
     // Update state with a copy of the array minus the deleted movie
     setMovieList(movieList.filter((movie) => movie.id !== id));
   };
 
-  // Task 4: Implement update functionality (toggle favorite)
+  // Implement update functionality (toggle favorite)
   const handleToggleFavorite = (id: number) => {
     // Update state with a copy of the array with the updated movie
     setMovieList(
