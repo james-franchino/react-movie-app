@@ -3,9 +3,11 @@ import { Movie } from "./movieData";
 
 interface ItemCardProps {
   movie: Movie;
+  onDelete: (id: number) => void;
+  onToggleFavorite: (id: number) => void;
 }
 
-function ItemCard({ movie }: ItemCardProps) {
+function ItemCard({ movie, onDelete, onToggleFavorite }: ItemCardProps) {
   const [showDetails, setShowDetails] = useState(false);
 
   const toggleDetails = () => {
@@ -19,14 +21,39 @@ function ItemCard({ movie }: ItemCardProps) {
     return `${hours}h ${mins}m`;
   };
 
+  // Handle delete without event propagation
+  const handleDelete = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering the card click
+    onDelete(movie.id);
+  };
+
+  // Handle favorite toggle without event propagation
+  const handleFavoriteToggle = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent triggering the card click
+    onToggleFavorite(movie.id);
+  };
+
   return (
     <div className="item-card" onClick={toggleDetails}>
       <div className="movie-poster">
         <img src={movie.poster} alt={`${movie.title} poster`} />
         <div className="movie-rating">{movie.rating.toFixed(1)}</div>
+
+        {/* Favorite icon - conditionally styled */}
+        <div
+          className={`favorite-icon ${movie.favorite ? "favorite" : ""}`}
+          onClick={handleFavoriteToggle}
+        >
+          ★
+        </div>
       </div>
       <div className="movie-info">
-        <h3 className="movie-title">{movie.title}</h3>
+        <div className="movie-header">
+          <h3 className="movie-title">{movie.title}</h3>
+          <button className="delete-button" onClick={handleDelete}>
+            ×
+          </button>
+        </div>
         <div className="movie-year">{movie.year}</div>
 
         {showDetails && (
