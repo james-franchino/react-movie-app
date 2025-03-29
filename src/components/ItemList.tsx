@@ -3,21 +3,22 @@ import ItemCard from "./ItemCard";
 
 interface ItemListProps {
   movies: Movie[];
+  onEdit: (movie: Movie) => void;
   onDelete: (id: number) => void;
-  onToggleFavorite: (id: number) => void;
 }
 
-function ItemList({ movies, onDelete, onToggleFavorite }: ItemListProps) {
+function ItemList({ movies, onEdit, onDelete }: ItemListProps) {
   return (
     <div className="item-list">
       {movies.length > 0 ? (
         <div className="movie-grid">
           {movies.map((movie) => (
             <ItemCard
-                key={movie.id}
-                movie={movie}
-                onDelete={onDelete}
-                onToggleFavorite={onToggleFavorite}/>
+              key={movie.id}
+              movie={movie}
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
           ))}
         </div>
       ) : (

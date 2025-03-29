@@ -3,11 +3,11 @@ import { Movie } from "./movieData";
 
 interface ItemCardProps {
   movie: Movie;
+  onEdit: (movie: Movie) => void;
   onDelete: (id: number) => void;
-  onToggleFavorite: (id: number) => void;
 }
 
-function ItemCard({ movie, onDelete, onToggleFavorite }: ItemCardProps) {
+function ItemCard({ movie, onEdit, onDelete }: ItemCardProps) {
   const [showDetails, setShowDetails] = useState(false);
 
   const toggleDetails = () => {
@@ -21,16 +21,10 @@ function ItemCard({ movie, onDelete, onToggleFavorite }: ItemCardProps) {
     return `${hours}h ${mins}m`;
   };
 
-  // Handle delete without event propagation
-  const handleDelete = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent triggering the card click
-    onDelete(movie.id);
-  };
-
-  // Handle favorite toggle without event propagation
-  const handleFavoriteToggle = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent triggering the card click
-    onToggleFavorite(movie.id);
+  // Prevent click event from bubbling up when clicking on action buttons
+  const handleActionClick = (e: React.MouseEvent, action: () => void) => {
+    e.stopPropagation();
+    action();
   };
 
   return (
@@ -38,22 +32,9 @@ function ItemCard({ movie, onDelete, onToggleFavorite }: ItemCardProps) {
       <div className="movie-poster">
         <img src={movie.poster} alt={`${movie.title} poster`} />
         <div className="movie-rating">{movie.rating.toFixed(1)}</div>
-
-        {/* Favorite icon - conditionally styled */}
-        <div
-          className={`favorite-icon ${movie.favorite ? "favorite" : ""}`}
-          onClick={handleFavoriteToggle}
-        >
-          ★
-        </div>
       </div>
       <div className="movie-info">
-        <div className="movie-header">
-          <h3 className="movie-title">{movie.title}</h3>
-          <button className="delete-button" onClick={handleDelete}>
-            ×
-          </button>
-        </div>
+        <h3 className="movie-title">{movie.title}</h3>
         <div className="movie-year">{movie.year}</div>
 
         {showDetails && (
@@ -70,6 +51,21 @@ function ItemCard({ movie, onDelete, onToggleFavorite }: ItemCardProps) {
               ))}
             </div>
             <p className="movie-description">{movie.description}</p>
+
+            <div className="movie-actions">
+              <button
+                className="edit-btn"
+                onClick={(e) => handleActionClick(e, () => onEdit(movie))}
+              >
+                Edit
+              </button>
+              <button
+                className="delete-btn"
+                onClick={(e) => handleActionClick(e, () => onDelete(movie.id))}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         )}
       </div>
